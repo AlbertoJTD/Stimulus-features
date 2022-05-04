@@ -225,13 +225,13 @@
       <h3>Feature 13 - Pomodoro App</h3>
       <div data-controller="slider timer" data-slider-input-value="60">
         <label for="duration">Duration: </label>
-        <input type="range" id="duration" min="1" max="120" value="60">
+        <input data-action="click->slider#setInput" data-timer-target="rangeInput" type="range" id="duration" min="1" max="120" value="60">
         <small>
-          <span></span> minutes
+          <span data-slider-target="display"></span> minutes
         </small><br />
-        <button class="btn btn-primary mt-3">Start</button>
-        <button class="btn btn-secondary mt-3">Stop</button>
-        <h4 class="text-center text-primary"></h4>
+        <button data-action="click->timer#start" class="btn btn-primary mt-3">Start</button>
+        <button data-action="click->timer#stop" class="btn btn-secondary mt-3">Stop</button>
+        <h4 data-timer-target="display" class="text-center text-primary"></h4>
       </div>
     </div>
 

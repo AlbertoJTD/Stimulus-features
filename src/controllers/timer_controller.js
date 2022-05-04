@@ -2,12 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["dateTimeInput", "display"]
+  static targets = ["dateTimeInput", "display", "rangeInput"]
+  static values = {expiry:Number}
   static timerInterval
 
   connect() {
     console.log("Timer controller is connected")
-    this.setInitialValues()
+    if (this.hasDateTimeInputTarget){
+      this.setInitialValues()
+    }
   }
 
   setInitialValues(){
@@ -19,11 +22,21 @@ export default class extends Controller {
   }
 
   start(){
-    clearInterval(this.timerInterval)
+    if (this.hasDateTimeInputTarget) {
+      this.expiryValue = this.rangeInputTarget.value * 60
+    }
+
     this.timerInterval = setInterval(() => {
-      const expiry = new Date(this.dateTimeInputTarget.value).getTime()
-      const now = new Date().getTime()
-      const difference = expiry - now
+      let difference
+      if (this.hasDateTimeInputTarget) {
+        const expiry = new Date(this.dateTimeInputTarget.value).getTime()
+        const now = new Date().getTime()
+        difference = expiry - now
+      } else {
+        difference = this.expiryValue * 1000
+        this.expiryValue--
+      }
+      
 
       if (difference < 0 ) {
         clearInterval(this.timerInterval)
