@@ -1,3 +1,452 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
 }
+
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* FE2 - Accordian */
+i {
+  transition: 0.4s ease-in-out;
+}
+
+i.rotate-180 {
+  transform: rotate(180deg);
+}
+
+i.rotate--180 {
+  transform: rotate(-180deg);
+}
+
+i.rotate--90 {
+  transform: rotate(-90deg);
+}
+
+.details {
+  transition: max-height 0.2s ease-out;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Dark Light Mode */
+*:root {
+  --primary-color: rgb(255, 92, 92);
+  --primary-variant: #ff2d2d;
+  --secondary-color: #1b9999;
+  --on-primary: rgb(250, 250, 250);
+  --on-background: rgb(66, 66, 66);
+  --on-background-alt: rgba(255, 255, 255, 0.7);
+  --background: rgb(255, 255, 255);
+  --box-shadow: 0 5px 20px 1px rgba(0, 0, 0, 0.5);
+}
+
+[data-dark-light-mode-value="dark"] {
+  --primary-color: rgb(150, 65, 255);
+  --primary-variant: #6c63ff;
+  --secondary-color: #03dac5;
+  --on-primary: #000;
+  --on-background: rgba(255, 255, 255, 0.9);
+  --on-background-alt: rgba(66, 66, 66, 0.7);
+  --background: #121212;
+}
+
+.theme {
+  background-color: var(--background);
+  color: var(--primary-color);
+  box-shadow: var(--box-shadow);
+}
+
+.theme button {
+  background-color: var(--on-background-alt);
+  color: var(--primary-color);
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid var(--on-background);
+}
+
+.theme button:hover{
+  color: var(--secondary-color);
+}
+
+.theme button:focus {
+  outline: none;
+}
+/*  FE4 - Dynamic Search */
+.text-blue {
+  color: lightblue;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-purple {
+  color: rgb(155, 131, 155);
+}
+
+.text-yellow {
+  color: yellow;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* FE11 - Todo App */
+/* Style the list (remove margins and bullets, etc) */
+.closeable-lists {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Style the list items */
+.closeable-lists li {
+  border: 1px solid rgb(0, 0, 0);
+  background-color: #f4cdcd;
+  margin-top: -1px; /* Prevent double borders */
+  padding: 12px;
+  font-size: 18px;
+  color: black;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Add a light grey background color on hover */
+.closeable-lists li:hover {
+  background-color: rgb(235, 196, 196);
+}
+
+/* Style the close button (span) */
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  padding: 12px 16px;
+  transform: translate(0%, -50%);
+}
+
+.close:hover {background: rgb(191, 160, 160);}
+
+.closeable-lists .crossed {
+  text-decoration: line-through;
+  background-color: rgb(196, 235, 225)
+}
+
+.closeable-lists .crossed:hover {
+  background-color: rgb(179, 237, 222)
+}
+
+/* FE12 - Modal */
+/* The Modal (background) */
+.modal-container {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Box */
+.modal-box {
+  background-color: #f2f2f2;
+  margin: 15% auto; /* 15% vertically and centered */
+  padding: 20px;
+  border: 1px solid rgb(109, 109, 109);
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.modal .close {
+  color: rgb(106, 106, 106);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal .close:hover,
+.modal .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* FE13 - Progress Bar */
+/* The progress container (grey background) */
+.progress-container {
+  width: 100%;
+  height: 8px;
+  background: #ccc;
+}
+
+/* The progress bar (scroll indicator) */
+.progress-bar {
+  height: 8px;
+  background: #04AA6D;
+  width: 0%;
+}
+
+.scroll-content {
+  height: 50vh;
+  overflow: scroll;
+}
+
+/* FE14 - Snackbar */
+/* The snackbar - position it at the bottom and in the middle of the screen */
+.snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+.snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+/* Tooltip */
+.tooltip-item {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted #ccc;
+  color: #006080;
+}
+
+.tooltip-item .tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip-item .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip-item:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* FE15 - Progress Bar */
+.outer-bar {
+  width: 100%;
+  background-color: #eee;
+}
+
+.inner-bar {
+  width: 1%;
+  height: 30px;
+  background-color: #04aa2b;
+}
+
+/* FE16 - Slideshow */
+/* Slideshow container */
+/* .slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+} */
+
+/* Hide the images by default */
+.display-none {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  background-color: rgba(0,0,0,0.15);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(198, 198, 198, 0.495);
+  color: rgb(222, 222, 222);
+}
+
+/* Caption text */
+.caption-text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 23px;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0,0,0,0.5);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  background-color: rgba(0,0,0,0.4);
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: rgb(215, 215, 215);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #595959;
+}
+
+/* Fading animation */
+.fade-in {
+  -webkit-animation: fade-in 1.5s ease-in forwards;
+  animation: fade-in 1.5s ease-in forwards;
+}
+
+@-webkit-keyframes fade-in {
+  from {opacity: .5}
+  to {opacity: 1}
+}
+
+@keyframes fade-in {
+  from {opacity: .5}
+  to {opacity: 1}
+}
+
+/* FE17 - Slideshow 2 */
+.position-relative {
+  position: relative;
+}
+
+.slideshow-container {
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+.slideshow-container .dots-container {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+}
+
+.slides-container {
+  display: flex;
+  height: 500px;
+}
+
+.slide {
+  position: relative;
+}
+
+.slide .index {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  color: white;
+  padding: 5px;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.slide .caption {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  text-align: center;
+  padding: 5px;
+}
